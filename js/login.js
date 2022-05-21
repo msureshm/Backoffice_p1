@@ -15,6 +15,8 @@ function login(){
       data: inputData,
       success: function (data) {
         $("#login-error").hide();
+        localStorage.setItem('user_group', data.data[0]["user_group"])
+        window.location.href = "home.html"
       },
       error: function (error) {
         $("#login-error").show();
