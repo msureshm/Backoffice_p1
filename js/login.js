@@ -1,4 +1,10 @@
-function login(){  
+$(document).ready(function(){
+  if(localStorage.getItem('user_group') == ''){
+    $("#logout").hide();
+  }
+});
+
+function login(){
   var username = $("#InputUsername").val()
   var password = $("#InputPassword").val()
   var url = "https://mindsplashacademy.in/index.php/api/student_api/bologin"

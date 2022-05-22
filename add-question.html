@@ -8,9 +8,12 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="js/home.js"></script>
+    <script src="js/add-question.js"></script>
 
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+		<!-- JavaScript Bundle with Popper -->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 
     <title>BackOffice</title>
 
@@ -20,65 +23,70 @@
     <!-- top navbar -->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="images/logo.png" class="img-thumbnail" width="200px"></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-          <ul class="navbar-nav me-auto mb-2 mb-md-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#"></a>
-            </li>
+        <a class="navbar-brand" href="home.html"><img src="images/logo.png" class="img-thumbnail" width="200px"></a>
+
+        <div class="collapse navbar-collapse" id="navbarCollapse" style="margin-left: 35%;">
+        	<center><h1 style="color:white">Backoffice</h1></center>
+          <ul class="navbar-nav me-auto mb-2 mb-md-0 center">
+            
           </ul>
+
           <div class="d-flex">
             <a id="logout" href="#" >Logout</a>
           </div>
         </div>
       </div>
+
     </nav>
     <br/><br/>
 
     <!-- side navbar -->
 		<div class="container-fluid">
 			<div class="row flex-nowrap">
-				<div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+				<div class="col-auto px-sm-2 px-0 bg-dark">
 					<div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
 						<a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
 							<span class="fs-5 d-none d-sm-inline">Menu</span>
 						</a>
 						<ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
 							<li class="nav-item">
-								<a href="add-question.html" class="nav-link align-middle px-0">
-									<i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Add Questions</span>
-								</a>
+								<div class="dropdown">
+								  <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+								    Questions
+								  </button>
+								  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+								    <li><a class="dropdown-item" href="add-question.html">Add Question</a></li>
+								    <li><a class="dropdown-item" href="#">Search Question</a></li>
+								  </ul>
+								</div>
 							</li>
 							<li class="nav-item">
-								<a href="#" class="nav-link align-middle px-0">
+								<a href="#" class="btn btn-dark">
 									<i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Olympiad Questions</span>
 								</a>
 							</li>
 							<li class="nav-item">
-								<a href="#" class="nav-link align-middle px-0">
+								<a href="#" class="btn btn-dark">
 									<i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Concepts</span>
 								</a>
 							</li>
 							<li class="nav-item">
-								<a href="#" class="nav-link align-middle px-0">
+								<a href="#" class="btn btn-dark">
 									<i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Student Questions</span>
 								</a>
 							</li>
 							<li class="nav-item">
-								<a href="#" class="nav-link align-middle px-0">
+								<a href="#" class="btn btn-dark">
 									<i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">ASK Subscriptions</span>
 								</a>
 							</li>
 							<li class="nav-item">
-								<a href="#" class="nav-link align-middle px-0">
+								<a href="#" class="btn btn-dark">
 									<i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Approvals</span>
 								</a>
 							</li>
 							<li class="nav-item">
-								<a href="#" class="nav-link align-middle px-0">
+								<a href="#" class="btn btn-dark">
 									<i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Reports</span>
 								</a>
 							</li>
@@ -91,34 +99,63 @@
 					<div class="col py-3">
 						<h3>Add Question</h3>
 
-						<form>
+						<form onsubmit="event.preventDefault(); add_question();">
+
+							<div class="container">
+							  <div class="row">
+							    <div class="col">
+										<select class="form-select" id="InputClass" aria-label="Default select example">
+										  <option id="InputClassSelect" selected>Select Class</option>
+										</select>
+							    </div>
+							    <div class="col">
+										<select class="form-select" id="InputSubject" aria-label="Default select example">
+										  <option id="InputSubjectSelect" selected>Select Subject</option>
+										</select>
+							    </div>
+							    <div class="col">
+										<select class="form-select" id="InputChapter" aria-label="Default select example">
+										  <option id="InputChapterSelect" selected>Select Chapter</option>
+										</select>
+							    </div>
+							    <div class="col">
+										<select class="form-select" id="InputDifficulty" aria-label="Default select example">
+										  <option id="InputDifficultySelect" selected>Select Difficulty</option>
+										  <option value="Easy">Easy</option>
+										  <option value="Medium">Medium</option>
+										  <option value="Difficult">Difficult</option>
+										</select>
+							    </div>
+							  </div>
+							</div>
+
 						  <div class="mb-3">
-						    <label for="exampleInputEmail1" class="form-label">Question</label>
-						    <input type="text" class="form-control" id="InputQuestion" aria-describedby="emailHelp">
+						    <label for="Inputquestion" class="form-label">Question</label>
+						    <input type="text" class="form-control" id="Inputquestion" aria-describedby="emailHelp">
 						  </div>
 						  <div class="mb-3">
-						    <label for="exampleInputEmail1" class="form-label">Option A</label>
-						    <input type="text" class="form-control" id="InputQuestion" aria-describedby="emailHelp">
+						    <label for="Inputoption_a" class="form-label">Option A</label>
+						    <input type="text" class="form-control" id="Inputoption_a" aria-describedby="emailHelp">
 						  </div>
 						  <div class="mb-3">
-						    <label for="exampleInputEmail1" class="form-label">Option B</label>
-						    <input type="text" class="form-control" id="InputQuestion" aria-describedby="emailHelp">
+						    <label for="Inputoption_b" class="form-label">Option B</label>
+						    <input type="text" class="form-control" id="Inputoption_b" aria-describedby="emailHelp">
 						  </div>
 						  <div class="mb-3">
-						    <label for="exampleInputEmail1" class="form-label">Option C</label>
-						    <input type="text" class="form-control" id="InputQuestion" aria-describedby="emailHelp">
+						    <label for="Inputoption_c" class="form-label">Option C</label>
+						    <input type="text" class="form-control" id="Inputoption_c" aria-describedby="emailHelp">
 						  </div>
 						  <div class="mb-3">
-						    <label for="exampleInputEmail1" class="form-label">Option D</label>
-						    <input type="text" class="form-control" id="InputQuestion" aria-describedby="emailHelp">
+						    <label for="Inputoption_d" class="form-label">Option D</label>
+						    <input type="text" class="form-control" id="Inputoption_d" aria-describedby="emailHelp">
 						  </div>
 						  <div class="mb-3">
-						    <label for="exampleInputEmail1" class="form-label">Correct Answer</label>
-						    <input type="text" class="form-control" id="InputQuestion" aria-describedby="emailHelp">
+						    <label for="Inputcorrect_answer" class="form-label">Correct Answer</label>
+						    <input type="text" class="form-control" id="Inputcorrect_answer" aria-describedby="emailHelp">
 						  </div>
 						  <div class="mb-3">
-						    <label for="exampleInputEmail1" class="form-label">Solution</label>
-						    <input type="text" class="form-control" id="InputQuestion" aria-describedby="emailHelp">
+						    <label for="Inputquestion_solution" class="form-label">Solution</label>
+						    <input type="text" class="form-control" id="Inputquestion_solution" aria-describedby="emailHelp">
 						  </div>
 						  <button type="submit" class="btn btn-primary">Submit</button>
 						</form>
@@ -128,6 +165,29 @@
 			</div>
 		</div>
 
+		<!-- Button trigger modal -->
+		<button type="button" class="btn btn-primary" id="modallaunchbutton" data-bs-toggle="modal" data-bs-target="#exampleModal" hidden="hidden">
+		  Launch demo modal
+		</button>
+
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">Question Added</h5>
+		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      </div>
+		      <div class="modal-body">
+		        Question successfully added, It will be visible to users once admin approves your question.
+		        <br/><br/>
+						Question Id is <b id="outputID">sdf</b>
+		      </div>
+		      <div class="modal-footer">
+		      </div>
+		    </div>
+		  </div>
+		</div>
   </body>
 
 </html>
