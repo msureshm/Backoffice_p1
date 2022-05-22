@@ -6,6 +6,7 @@ $(document).ready(function(){
     }
     get_subjects_hash["url"] = "https://mindsplashacademy.in/index.php/api/student_api/subjectslist";
     get_subjects_hash["type"] = "POST";
+    $("#InputSubject").prop("disabled", false)
     make_request(get_subjects_hash)
   });
 
@@ -16,11 +17,23 @@ $(document).ready(function(){
     }
     get_chapters_hash["url"] = "https://mindsplashacademy.in/index.php/api/student_api/chapterslist";
     get_chapters_hash["type"] = "POST";
+    $("#InputChapter").prop("disabled", false)
     make_request(get_chapters_hash)
   });
 
   $('#exampleModal').on('hidden.bs.modal', function () {
     location.reload();
+  });
+
+  $("#InputChapter").on("change", function() {
+    $("#InputDifficulty").prop("disabled", false)
+    $("#Inputquestion").prop("disabled", false)
+    $("#Inputoption_a").prop("disabled", false)
+    $("#Inputoption_b").prop("disabled", false)
+    $("#Inputoption_c").prop("disabled", false)
+    $("#Inputoption_d").prop("disabled", false)
+    $("#Inputcorrect_answer").prop("disabled", false)
+    $("#Inputquestion_solution").prop("disabled", false)
   });
 });
 
@@ -77,7 +90,8 @@ function add_question(){
     question_solution: $("#Inputquestion_solution").val(),
     difficulties: $("#InputDifficulty").val(),
     classes: $("#InputClass option:selected").text(),
-    chapter_id: $("#InputChapter").val()
+    chapter_id: $("#InputChapter").val(),
+    filename1: $("#myFile1").val()
   };
   hash["url"] = "https://mindsplashacademy.in/index.php/api/student_api/addboquestions";
   hash["type"] = "POST";
@@ -85,3 +99,29 @@ function add_question(){
 
   return false;
 }
+
+// $(document).ready(function (e) {
+//   $('#questionForm').on('submit',(function(e) {
+//       e.preventDefault();
+//       var formData = new FormData(this);
+//       debugger
+//       $.ajax({
+//           type:'POST',
+//           url: "https://mindsplashacademy.in/index.php/api/student_api/addboquestions",
+//           data:formData,
+//           cache:false,
+//           contentType: false,
+//           processData: false,
+//           success:function(data){
+//             debugger;
+//               console.log("success");
+//               console.log(data);
+//           },
+//           error: function(data){
+//             debugger;
+//               console.log("error");
+//               console.log(data);
+//           }
+//       });
+//   }));
+// });
