@@ -4,6 +4,7 @@ $(document).on('change','#InputChapter',function(){
     $("#NewChapter").prop("disabled", false)
   }
   else  {
+    $("#NewChapterDiv").prop("hidden", true)
     $("#InputDifficulty").prop("disabled", false)
     $("#Inputquestion").prop("disabled", false)
     $("#Inputoption_a").prop("disabled", false)
@@ -25,6 +26,10 @@ $(document).on('click', '#addChapter', function(){
   add_chapter_hash["url"] = "https://mindsplashacademy.in/index.php/api/student_api/addchapters";
   add_chapter_hash["type"] = "POST";
   make_request(add_chapter_hash);
+});
+
+$(document).on('click', '.remove_image', function(){
+  $("#" + $(this).attr("img_id")).val("");
 });
 
 $(document).ready(function(){
