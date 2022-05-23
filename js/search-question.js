@@ -55,7 +55,8 @@ function make_request(hash) {
       success: function (response) {
         console.log(response);
         if(hash["url_for"] ==  "disable_question") {
-					alert("Question Disabled");
+					alert("Question with ID:" + hash["inputData"]["question_id"] + " Disabled");
+					location.reload();
         }
         else	{
 	      	$("#questions_list").html("<tr><th>Question ID</th><th>Question Text</th><th>Action</th></tr>");
