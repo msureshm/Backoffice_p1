@@ -1,240 +1,275 @@
 <!DOCTYPE html>
 <html lang="en-US" dir="ltr">
 
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="js/home.js"></script>
-    <script src="js/add-question.js"></script>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="js/home.js"></script>
+	<script src="js/add-question.js"></script>
 
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-		<!-- JavaScript Bundle with Popper -->
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+	<!-- CSS only -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+	<!-- JavaScript Bundle with Popper -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+		crossorigin="anonymous"></script>
 
-    <title>BackOffice</title>
+	<title>BackOffice</title>
 
-  </head>
+</head>
 
-  <body>
-    <!-- top navbar -->
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="home.html"><img src="images/logo.png" class="img-thumbnail" width="200px"></a>
-
-        <div class="collapse navbar-collapse" id="navbarCollapse" style="margin-left: 35%;">
-        	<center><h1 style="color:white">Backoffice</h1></center>
-          <ul class="navbar-nav me-auto mb-2 mb-md-0 center">
-            
-          </ul>
-
-          <div class="d-flex">
-            <a id="logout" href="#" >Logout</a>
-          </div>
-        </div>
-      </div>
-
-    </nav>
-    <br/><br/>
-
-    <!-- side navbar -->
+<body>
+	<!-- top navbar -->
+	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
 		<div class="container-fluid">
-			<div class="row flex-nowrap">
-				<div class="col-auto px-sm-2 px-0 bg-dark">
-					<div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-						<a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-							<span class="fs-5 d-none d-sm-inline">Menu</span>
-						</a>
-						<ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-							<li class="nav-item">
-								<div class="dropdown">
-								  <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-								    Questions
-								  </button>
-								  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-								    <li><a class="dropdown-item" href="add-question.html">Add Question</a></li>
-								    <li><a class="dropdown-item" href="#">Search Question</a></li>
-								  </ul>
-								</div>
-							</li>
-							<li class="nav-item">
-								<a href="#" class="btn btn-dark">
-									<i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Olympiad Questions</span>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a href="#" class="btn btn-dark">
-									<i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Concepts</span>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a href="#" class="btn btn-dark">
-									<i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Student Questions</span>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a href="#" class="btn btn-dark">
-									<i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">ASK Subscriptions</span>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a href="#" class="btn btn-dark">
-									<i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Approvals</span>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a href="#" class="btn btn-dark">
-									<i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Reports</span>
-								</a>
-							</li>
-						</ul>
-						<hr>
-					</div>
+			<a class="navbar-brand" href="home.html"><img src="images/logo.png" class="img-thumbnail" width="200px"></a>
+
+			<div class="collapse navbar-collapse" id="navbarCollapse" style="margin-left: 35%;">
+				<center>
+					<h1 style="color:white">Backoffice</h1>
+				</center>
+				<ul class="navbar-nav me-auto mb-2 mb-md-0 center">
+
+				</ul>
+
+				<div class="d-flex">
+					<a id="logout" href="#">Logout</a>
 				</div>
-				<main class="container mb-3">
-					<br/><br/>
-					<div class="col py-3">
-						<h3>Add Question</h3>
-						<form onsubmit="event.preventDefault(); add_question();" id="questionForm">
-							<div class="container row">
-								<div class="col-10">
-
-									<div class="container">
-									  <div class="row">
-									    <div class="col">
-												<select class="form-select" id="InputClass" aria-label="Default select example" name="classes">
-												  <option id="InputClassSelect" selected>Select Class</option>
-												</select>
-									    </div>
-									    <div class="col">
-												<select class="form-select" id="InputSubject" aria-label="Default select example" name="" disabled>
-												  <option id="InputSubjectSelect" selected>Select Subject</option>
-												</select>
-									    </div>
-									    <div class="col">
-												<select class="form-select" id="InputChapter" aria-label="Default select example" name="" disabled>
-												  <option id="InputChapterSelect" selected>Select Chapter</option>
-												</select>
-									    </div>
-									    <div class="col">
-												<select class="form-select" id="InputDifficulty" aria-label="Default select example" name="difficulties" disabled>
-												  <option id="InputDifficultySelect" selected>Select Difficulty</option>
-												  <option value="Easy">Easy</option>
-												  <option value="Medium">Medium</option>
-												  <option value="Difficult">Difficult</option>
-												</select>
-									    </div>
-									  </div>
-									</div>
-									<hr>
-
-								  <div class="mb-3">
-								    <label for="Inputquestion" class="form-label">Question</label>
-								    <textarea type="text" class="form-control" id="Inputquestion" aria-describedby="emailHelp" rows="10" name="question" disabled></textarea>
-								  </div>
-								  <div class="mb-3">
-								    <label for="Inputoption_a" class="form-label">Option A</label>
-								    <input type="text" class="form-control" id="Inputoption_a" aria-describedby="emailHelp" name="option_a" disabled>
-								  </div>
-								  <div class="mb-3">
-								    <label for="Inputoption_b" class="form-label">Option B</label>
-								    <input type="text" class="form-control" id="Inputoption_b" aria-describedby="emailHelp" name="option_b" disabled>
-								  </div>
-								  <div class="mb-3">
-								    <label for="Inputoption_c" class="form-label">Option C</label>
-								    <input type="text" class="form-control" id="Inputoption_c" aria-describedby="emailHelp" name="option_c" disabled>
-								  </div>
-								  <div class="mb-3">
-								    <label for="Inputoption_d" class="form-label">Option D</label>
-								    <input type="text" class="form-control" id="Inputoption_d" aria-describedby="emailHelp" name="option_d" disabled>
-								  </div>
-								  <div class="mb-3">
-								    <label for="Inputcorrect_answer" class="form-label">Correct Answer</label>
-								    <input type="text" class="form-control" id="Inputcorrect_answer" aria-describedby="emailHelp" name="correct_answer" disabled>
-								  </div>
-								  <div class="mb-3">
-								    <label for="Inputquestion_solution" class="form-label">Solution</label>
-								    <textarea type="text" class="form-control" id="Inputquestion_solution" aria-describedby="emailHelp" rows="10" name="question_solution" disabled></textarea>
-								  </div>
-								  <button type="submit" class="btn btn-primary">Submit</button>
-								</div>
-								<div class="col-2">
-								<table style="background-color:rgb(173 104 123)">
-									<tr>
-										<td>1.</td>
-										<td><input type="file" id="myFile1" name="filename1"/></td>
-									</tr>
-									<tr>
-										<td>2.</td>
-										<td><input type="file" id="myFile2" name="filename2"/></td>
-									</tr>
-									<tr>
-										<td>3.</td>
-										<td><input type="file" id="myFile3" name="filename3"/></td>
-									</tr>
-									<tr>
-										<td>4.</td>
-										<td><input type="file" id="myFile4" name="filename4"/></td>
-									</tr>
-									<tr>
-										<td>5.</td>
-										<td><input type="file" id="myFile5" name="filename5"/></td>
-									</tr>
-									<tr>
-										<td>6.</td>
-										<td><input type="file" id="myFile6" name="filename6"/></td>
-									</tr>
-									<tr>
-										<td>7.</td>
-										<td><input type="file" id="myFile7" name="filename7"/></td>
-									</tr>
-									<tr>
-										<td>8.</td>
-										<td><input type="file" id="myFile8" name="filename8"/></td>
-									</tr>
-									<tr>
-										<td>9.</td>
-										<td><input type="file" id="myFile9" name="filename9"/></td>
-									</tr>
-									<tr>
-										<td>10.</td>
-										<td><input type="file" id="myFile10" name="filename10"/></td>
-									</tr>
-								</table>
-								</div>
-							</form>
-						</div>
-					</div>
-				</main>
 			</div>
 		</div>
 
-		<!-- Button trigger modal -->
-		<button type="button" class="btn btn-primary" id="modallaunchbutton" data-bs-toggle="modal" data-bs-target="#exampleModal" hidden="hidden">
-		  Launch demo modal
-		</button>
+	</nav>
+	<br /><br />
 
-		<!-- Modal -->
-		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		  <div class="modal-dialog">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <h5 class="modal-title" id="exampleModalLabel">Question Added</h5>
-		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-		      </div>
-		      <div class="modal-body">
-		        Question successfully added, It will be visible to users once admin approves your question.
-		        <br/><br/>
-						Question Id is <b id="outputID">sdf</b>
-		      </div>
-		      <div class="modal-footer">
-		      </div>
-		    </div>
-		  </div>
+	<!-- side navbar -->
+	<div class="container-fluid">
+		<div class="row flex-nowrap">
+			<div class="col-auto px-sm-2 px-0 bg-dark">
+				<div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+					<a href="/"
+						class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+						<span class="fs-5 d-none d-sm-inline">Menu</span>
+					</a>
+					<ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
+						id="menu">
+						<li class="nav-item">
+							<div class="dropdown">
+								<button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1"
+									data-bs-toggle="dropdown" aria-expanded="false">
+									Questions
+								</button>
+								<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+									<li><a class="dropdown-item" href="add-question.html">Add Question</a></li>
+									<li><a class="dropdown-item" href="search-question.html">Search Question</a></li>
+								</ul>
+							</div>
+						</li>
+						<li class="nav-item">
+							<a href="#" class="btn btn-dark">
+								<i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Olympiad
+									Questions</span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="#" class="btn btn-dark">
+								<i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Concepts</span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="#" class="btn btn-dark">
+								<i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Student
+									Questions</span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="#" class="btn btn-dark">
+								<i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">ASK
+									Subscriptions</span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="#" class="btn btn-dark">
+								<i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Approvals</span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="#" class="btn btn-dark">
+								<i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Reports</span>
+							</a>
+						</li>
+					</ul>
+					<hr>
+				</div>
+			</div>
+			<main class="container mb-3">
+				<br /><br />
+				<div class="col py-3">
+					<h3>Add Question</h3>
+					<form onsubmit="event.preventDefault(); add_question();" id="questionForm">
+						<div class="container row">
+							<div class="col-10">
+
+								<div class="container">
+									<div class="row">
+										<div class="col">
+											<select class="form-select" id="InputClass"
+												aria-label="Default select example" name="classes">
+												<option id="InputClassSelect" selected>Select Class</option>
+											</select>
+										</div>
+										<div class="col">
+											<select class="form-select" id="InputSubject"
+												aria-label="Default select example" name="" disabled>
+												<option id="InputSubjectSelect" selected>Select Subject</option>
+											</select>
+										</div>
+										<div class="col">
+											<select class="form-select" id="InputChapter"
+												aria-label="Default select example" name="" disabled>
+												<option id="InputChapterSelect" selected>Select Chapter</option>
+											</select>
+										</div>
+										<div class="col">
+											<select class="form-select" id="InputDifficulty"
+												aria-label="Default select example" name="difficulties" disabled>
+												<option id="InputDifficultySelect" selected>Select Difficulty</option>
+												<option value="Easy">Easy</option>
+												<option value="Medium">Medium</option>
+												<option value="Difficult">Difficult</option>
+											</select>
+										</div>
+									</div>
+								</div>
+								<hr>
+
+								<div class="mb-3">
+									<label for="Inputquestion" class="form-label">Question</label>
+									<textarea type="text" class="form-control" id="Inputquestion"
+										aria-describedby="emailHelp" rows="10" name="question" disabled></textarea>
+								</div>
+								<div class="mb-3">
+									<label for="Inputoption_a" class="form-label">Option A</label>
+									<input type="text" class="form-control" id="Inputoption_a"
+										aria-describedby="emailHelp" name="option_a" disabled>
+								</div>
+								<div class="mb-3">
+									<label for="Inputoption_b" class="form-label">Option B</label>
+									<input type="text" class="form-control" id="Inputoption_b"
+										aria-describedby="emailHelp" name="option_b" disabled>
+								</div>
+								<div class="mb-3">
+									<label for="Inputoption_c" class="form-label">Option C</label>
+									<input type="text" class="form-control" id="Inputoption_c"
+										aria-describedby="emailHelp" name="option_c" disabled>
+								</div>
+								<div class="mb-3">
+									<label for="Inputoption_d" class="form-label">Option D</label>
+									<input type="text" class="form-control" id="Inputoption_d"
+										aria-describedby="emailHelp" name="option_d" disabled>
+								</div>
+								<div class="mb-3">
+									<label for="Inputcorrect_answer" class="form-label">Correct Answer</label>
+									<input type="text" class="form-control" id="Inputcorrect_answer"
+										aria-describedby="emailHelp" name="correct_answer" disabled>
+								</div>
+								<div class="mb-3">
+									<label for="Inputquestion_solution" class="form-label">Solution</label>
+									<textarea type="text" class="form-control" id="Inputquestion_solution"
+										aria-describedby="emailHelp" rows="10" name="question_solution"
+										disabled></textarea>
+								</div>
+								<button type="submit" class="btn btn-primary">Submit</button>
+							</div>
+							<div class="col-2">
+								<table style="background-color:rgb(173 104 123)">
+									<tr>
+										<td>1.</td>
+										<td><input type="file" id="myFile1" name="image1"
+												onchange="file_upload('myFile1')" data-img="" />
+										</td>
+									</tr>
+									<tr>
+										<td>2.</td>
+										<td><input type="file" id="myFile2" name="image2"
+												onchange="file_upload('myFile2')" data-img="" /></td>
+									</tr>
+									<tr>
+										<td>3.</td>
+										<td><input type="file" id="myFile3" name="image3"
+												onchange="file_upload('myFile3')" data-img="" /></td>
+									</tr>
+									<tr>
+										<td>4.</td>
+										<td><input type="file" id="myFile4" name="image4"
+												onchange="file_upload('myFile4')" data-img="" /></td>
+									</tr>
+									<tr>
+										<td>5.</td>
+										<td><input type="file" id="myFile5" name="image5"
+												onchange="file_upload('myFile5')" data-img="" /></td>
+									</tr>
+									<tr>
+										<td>6.</td>
+										<td><input type="file" id="myFile6" name="image6"
+												onchange="file_upload('myFile6')" data-img="" /></td>
+									</tr>
+									<tr>
+										<td>7.</td>
+										<td><input type="file" id="myFile7" name="image7"
+												onchange="file_upload('myFile7')" data-img="" /></td>
+									</tr>
+									<tr>
+										<td>8.</td>
+										<td><input type="file" id="myFile8" name="image8"
+												onchange="file_upload('myFile8')" data-img="" /></td>
+									</tr>
+									<tr>
+										<td>9.</td>
+										<td><input type="file" id="myFile9" name="image9"
+												onchange="file_upload('myFile9')" data-img="" /></td>
+									</tr>
+									<tr>
+										<td>10.</td>
+										<td><input type="file" id="myFile10" name="image10"
+												onchange="file_upload('myFile10')" data-img="" /></td>
+									</tr>
+								</table>
+							</div>
+					</form>
+				</div>
 		</div>
-  </body>
+		</main>
+	</div>
+	</div>
+
+	<!-- Button trigger modal -->
+	<button type="button" class="btn btn-primary" id="modallaunchbutton" data-bs-toggle="modal"
+		data-bs-target="#exampleModal" hidden="hidden">
+		Launch demo modal
+	</button>
+
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Question Added</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					Question successfully added, It will be visible to users once admin approves your question.
+					<br /><br />
+					Question Id is <b id="outputID">sdf</b>
+				</div>
+				<div class="modal-footer">
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
 
 </html>

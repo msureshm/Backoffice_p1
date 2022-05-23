@@ -78,8 +78,53 @@ function make_request(hash) {
   });
 }
 
+function getBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = error => reject(error);
+  });
+}
+var id;
+var data;
+function file_upload(id) {
+  var fileInput = document.getElementById(id);
+  var reader = new FileReader();
+  var img;
+reader.readAsDataURL(fileInput.files[0]);
+
+  reader.onload = function () {
+ 
+    img = reader.result; //base64encoded string
+    
+    $.ajax({
+      url: 'https://mindsplashacademy.in/index.php/api/student_api/questionimage_upload',
+      type: 'POST',
+      data: {image:img},
+      success: function (response) {
+        $("#"+id).attr('data-img',response.data);
+      }
+    });
+  
+};
+  //console.log(getBase64(fileInput.files[0]));
+
+ 
+}
+
 function add_question(){
   var hash = {url_for: "add_question"};
+ var  image1 = $("#myFile1").attr("data-img");
+  var image2= $("#myFile2").attr('data-img');
+  var image3= $("#myFile3").attr('data-img');
+  var image4= $("#myFile4").attr('data-img');
+  var image5= $("#myFile5").attr('data-img');
+  var image6= $("#myFile6").attr('data-img');
+  var image7= $("#myFile7").attr('data-img');
+  var image8= $("#myFile8").attr('data-img');
+  var image9= $("#myFile9").attr('data-img');
+  var image10= $("#myFile10").attr('data-img');
   hash["inputData"] = {
     question: $("#Inputquestion").val(),
     option_a: $("#Inputoption_a").val(),
@@ -91,7 +136,16 @@ function add_question(){
     difficulties: $("#InputDifficulty").val(),
     classes: $("#InputClass option:selected").text(),
     chapter_id: $("#InputChapter").val(),
-    filename1: $("#myFile1").val()
+      image1: image1,
+      image2: image2,
+      image3: image3,
+      image4: image4 ,
+      image5: image5,
+      image6: image6,
+      image7: image7,
+      image8: image8,
+      image9: image9,
+      image10: image10,
   };
   hash["url"] = "https://mindsplashacademy.in/index.php/api/student_api/addboquestions";
   hash["type"] = "POST";
@@ -100,6 +154,17 @@ function add_question(){
   return false;
 }
 
+function search_question() {
+  var hash = {url_for: "search_question"};
+  hash["inputData"] = {
+question_id: $("#Inputcorrect_answer").val(),
+  };
+
+    hash["url"] = "https://mindsplashacademy.in/index.php/api/student_api/addboquestions";
+  hash["type"] = "POST";
+  make_request(hash);
+   return false;
+}
 // $(document).ready(function (e) {
 //   $('#questionForm').on('submit',(function(e) {
 //       e.preventDefault();
