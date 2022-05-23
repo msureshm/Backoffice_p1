@@ -115,7 +115,7 @@ reader.readAsDataURL(fileInput.files[0]);
 
 function add_question(){
   var hash = {url_for: "add_question"};
- var  image1 = $("#myFile1").attr("data-img");
+  var  image1 = $("#myFile1").attr("data-img");
   var image2= $("#myFile2").attr('data-img');
   var image3= $("#myFile3").attr('data-img');
   var image4= $("#myFile4").attr('data-img');
