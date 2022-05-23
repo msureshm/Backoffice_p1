@@ -1,3 +1,32 @@
+$(document).on('change','#InputChapter',function(){
+  if($(this).val() == "AddChapter") {
+    $("#NewChapterDiv").prop("hidden", false)
+    $("#NewChapter").prop("disabled", false)
+  }
+  else  {
+    $("#InputDifficulty").prop("disabled", false)
+    $("#Inputquestion").prop("disabled", false)
+    $("#Inputoption_a").prop("disabled", false)
+    $("#Inputoption_b").prop("disabled", false)
+    $("#Inputoption_c").prop("disabled", false)
+    $("#Inputoption_d").prop("disabled", false)
+    $("#Inputcorrect_answer").prop("disabled", false)
+    $("#Inputquestion_solution").prop("disabled", false)
+  }
+});
+
+$(document).on('click', '#addChapter', function(){
+  debugger;
+  var add_chapter_hash = {url_for: "add_chapter"};
+  add_chapter_hash["inputData"] = {
+    subject_id: $("#InputSubject").val(),
+    chapter_name: $("#NewChapter").val()
+  }
+  add_chapter_hash["url"] = "https://mindsplashacademy.in/index.php/api/student_api/addchapters";
+  add_chapter_hash["type"] = "POST";
+  make_request(add_chapter_hash);
+});
+
 $(document).ready(function(){
   $("#InputClass").on("change", function() {
     var get_subjects_hash = {url_for: "get_subjects"};
@@ -6,8 +35,8 @@ $(document).ready(function(){
     }
     get_subjects_hash["url"] = "https://mindsplashacademy.in/index.php/api/student_api/subjectslist";
     get_subjects_hash["type"] = "POST";
-    $("#InputSubject").prop("disabled", false)
-    make_request(get_subjects_hash)
+    $("#InputSubject").prop("disabled", false);
+    make_request(get_subjects_hash);
   });
 
   $("#InputSubject").on("change", function() {
@@ -18,7 +47,7 @@ $(document).ready(function(){
     get_chapters_hash["url"] = "https://mindsplashacademy.in/index.php/api/student_api/chapterslist";
     get_chapters_hash["type"] = "POST";
     $("#InputChapter").prop("disabled", false)
-    make_request(get_chapters_hash)
+    make_request(get_chapters_hash);
   });
 
   $('#exampleModal').on('hidden.bs.modal', function () {
@@ -26,14 +55,6 @@ $(document).ready(function(){
   });
 
   $("#InputChapter").on("change", function() {
-    $("#InputDifficulty").prop("disabled", false)
-    $("#Inputquestion").prop("disabled", false)
-    $("#Inputoption_a").prop("disabled", false)
-    $("#Inputoption_b").prop("disabled", false)
-    $("#Inputoption_c").prop("disabled", false)
-    $("#Inputoption_d").prop("disabled", false)
-    $("#Inputcorrect_answer").prop("disabled", false)
-    $("#Inputquestion_solution").prop("disabled", false)
   });
 });
 
@@ -56,6 +77,7 @@ function make_request(hash) {
         }
         if(hash["url_for"] ==  "get_subjects") {
           $("#InputSubject").html('<option id="InputSubjectSelect" selected>Select Subject</option>');
+          $("#InputChapter").html('<option id="InputChapterSelect" selected>Select Chapter</option>');
           $.each(response.data, function(key, value) {
             $("#InputSubject").append(`<option value="${value.id}">${value.subject_name}</option>`)
           });
@@ -65,11 +87,25 @@ function make_request(hash) {
           $.each(response.data, function(key, value) {
             $("#InputChapter").append(`<option value="${value.id}">${value.chapter_name}</option>`)
           });
+          $("#InputChapter").append('<option value="AddChapter">===Add New Chapter===</option>');
         }
         if(hash["url_for"] ==  "add_question") {
           $("#outputID").html(response.data[0].id);
           $("#modallaunchbutton").click();
           debugger;
+        }
+        if(hash["url_for"] ==  "add_chapter") {
+          debugger;
+          $("#NewChapterDiv").hide();
+          var get_chapters_hash = {url_for: "get_chapters"};
+          get_chapters_hash["inputData"] = {
+            subject_id: $("#InputSubject").val()
+          }
+          get_chapters_hash["url"] = "https://mindsplashacademy.in/index.php/api/student_api/chapterslist";
+          get_chapters_hash["type"] = "POST";
+          $("#InputChapter").prop("disabled", false);
+          make_request(get_chapters_hash);
+          // $("#NewChapterDiv").html("Chapter Name: " + response.data.name + " ID: " + response.data.id)
         }
       },
       error: function (response) {
