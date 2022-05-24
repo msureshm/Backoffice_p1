@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="js/home.js"></script>
+	<script src="js/edit-question.js"></script>
+
+	<!-- CSS only -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+	<!-- JavaScript Bundle with Popper -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+		crossorigin="anonymous"></script>
+
+	<title>BackOffice</title>
+
+</head>
+
+<body>
+	<!-- top navbar -->
+	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="home.html"><img src="images/logo.png" class="img-thumbnail" width="200px"></a>
+
+			<div class="collapse navbar-collapse" id="navbarCollapse" style="margin-left: 35%;">
+				<center>
+					<h1 style="color:white">Backoffice</h1>
+				</center>
+				<ul class="navbar-nav me-auto mb-2 mb-md-0 center">
+
+				</ul>
+
+				<div class="d-flex">
+					<a id="logout" href="#">Logout</a>
+				</div>
+			</div>
+		</div>
+
+	</nav>
+	<br /><br />
+
+	<!-- side navbar -->
+	<div class="container-fluid">
+		<div class="row flex-nowrap">
+			<div class="col-auto px-sm-2 px-0 bg-dark">
+				<div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+					<a href="/"
+						class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+						<span class="fs-5 d-none d-sm-inline">Menu</span>
+					</a>
+					<ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
+						id="menu">
+						<li class="nav-item">
+							<div class="dropdown">
+								<button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1"
+									data-bs-toggle="dropdown" aria-expanded="false">
+									Questions
+								</button>
+								<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+									<li><a class="dropdown-item" href="add-question.html">Add Question</a></li>
+									<li><a class="dropdown-item" href="search-question.html">Search Question</a></li>
+								</ul>
+							</div>
+						</li>
+						<li class="nav-item">
+							<a href="#" class="btn btn-dark">
+								<i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Olympiad
+									Questions</span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="#" class="btn btn-dark">
+								<i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Concepts</span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="#" class="btn btn-dark">
+								<i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Student
+									Questions</span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="#" class="btn btn-dark">
+								<i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">ASK
+									Subscriptions</span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="#" class="btn btn-dark">
+								<i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Approvals</span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="#" class="btn btn-dark">
+								<i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Reports</span>
+							</a>
+						</li>
+					</ul>
+					<hr>
+				</div>
+			</div>
+			<main class="container mb-3">
+				<br /><br />
+				<div class="col py-3">
+					<h3>Edit Question</h3>
+					<form onsubmit="event.preventDefault(); add_question();" id="questionForm">
+						<div class="container row">
+							<div class="col-10">
+
+								<div class="container">
+									<div class="row">
+										<div class="col">
+											<select class="form-select" id="InputClass"
+												aria-label="Default select example" name="classes">
+												<option id="InputClassSelect" selected>Select Class</option>
+											</select>
+										</div>
+										<div class="col">
+											<select class="form-select" id="InputSubject"
+												aria-label="Default select example" name="" disabled>
+												<option id="InputSubjectSelect" selected>Select Subject</option>
+											</select>
+										</div>
+										<div class="col">
+											<select class="form-select" id="InputChapter"
+												aria-label="Default select example" name="" disabled>
+												<option id="InputChapterSelect" selected>Select Chapter</option>
+											</select>
+										</div>
+										<div class="col" id="NewChapterDiv" hidden>
+											<input class="form-control" id="NewChapter" aria-label="Default" name="" disabled>
+											</input>
+											<a href="#" class="btn btn-primary" id="addChapter">Add Chapter</a>
+										</div>
+										<div class="col">
+											<select class="form-select" id="InputDifficulty"
+												aria-label="Default select example" name="difficulties" disabled>
+												<option id="InputDifficultySelect" selected>Select Difficulty</option>
+												<option value="Easy">Easy</option>
+												<option value="Medium">Medium</option>
+												<option value="Difficult">Difficult</option>
+											</select>
+										</div>
+									</div>
+								</div>
+								<hr>
+
+								<div class="mb-3">
+									<label for="Inputquestion" class="form-label">Question</label>
+									<textarea type="text" class="form-control" id="Inputquestion"
+										aria-describedby="emailHelp" rows="10" name="question" disabled></textarea>
+								</div>
+								<div class="mb-3">
+									<label for="Inputoption_a" class="form-label">Option A</label>
+									<input type="text" class="form-control" id="Inputoption_a"
+										aria-describedby="emailHelp" name="option_a" disabled>
+								</div>
+								<div class="mb-3">
+									<label for="Inputoption_b" class="form-label">Option B</label>
+									<input type="text" class="form-control" id="Inputoption_b"
+										aria-describedby="emailHelp" name="option_b" disabled>
+								</div>
+								<div class="mb-3">
+									<label for="Inputoption_c" class="form-label">Option C</label>
+									<input type="text" class="form-control" id="Inputoption_c"
+										aria-describedby="emailHelp" name="option_c" disabled>
+								</div>
+								<div class="mb-3">
+									<label for="Inputoption_d" class="form-label">Option D</label>
+									<input type="text" class="form-control" id="Inputoption_d"
+										aria-describedby="emailHelp" name="option_d" disabled>
+								</div>
+								<div class="mb-3">
+									<label for="Inputcorrect_answer" class="form-label">Correct Answer</label>
+									<input type="text" class="form-control" id="Inputcorrect_answer"
+										aria-describedby="emailHelp" name="correct_answer" disabled>
+								</div>
+								<div class="mb-3">
+									<label for="Inputquestion_solution" class="form-label">Solution</label>
+									<textarea type="text" class="form-control" id="Inputquestion_solution"
+										aria-describedby="emailHelp" rows="10" name="question_solution"
+										disabled></textarea>
+								</div>
+								<button type="submit" class="btn btn-primary">Submit</button>
+							</div>
+							<div class="col-2">
+								<center><h3>Images</h3></center>
+								<table class="bg-secondary bg-gradient">
+									<tr>
+										<td>1.</td>
+										<td>
+											<input id="inputFileToLoad1" type="file" onchange="encodeImageFileAsURL(1);" />
+										</td>
+										<td>
+											<div id="imgDiv1"></div>
+										</td>
+										<td><a href="#" class="remove_image link-danger" img_id="1">Remove Image</a></td>
+									</tr>
+									<tr>
+										<td>2.</td>
+										<td>
+											<input type="file" id="inputFileToLoad2" name="image2"
+												onchange="encodeImageFileAsURL(2)" data-img="" />
+											</td>
+										<td>
+											<div id="imgDiv2"></div>
+										</td>
+										<td><a href="#" class="remove_image link-danger" img_id="2">Remove Image</a></td>
+									</tr>
+									<tr>
+										<td>3.</td>
+										<td><input type="file" id="inputFileToLoad3" name="image3"
+												onchange="encodeImageFileAsURL(3)" data-img="" /></td>
+										<td>
+											<div id="imgDiv3"></div>
+										</td>
+										<td><a href="#" class="remove_image link-danger" img_id="3">Remove Image</a></td>
+									</tr>
+									<tr>
+										<td>4.</td>
+										<td><input type="file" id="inputFileToLoad4" name="image4"
+												onchange="encodeImageFileAsURL(4)" data-img="" /></td>
+										<td>
+											<div id="imgDiv4"></div>
+										</td>
+										<td><a href="#" class="remove_image link-danger" img_id="4">Remove Image</a></td>
+									</tr>
+									<tr>
+										<td>5.</td>
+										<td><input type="file" id="inputFileToLoad5" name="image5"
+												onchange="encodeImageFileAsURL(5)" data-img="" /></td>
+										<td>
+											<div id="imgDiv5"></div>
+										</td>
+										<td><a href="#" class="remove_image link-danger" img_id="5">Remove Image</a></td>
+									</tr>
+									<tr>
+										<td>6.</td>
+										<td><input type="file" id="inputFileToLoad6" name="image6"
+												onchange="encodeImageFileAsURL(6)" data-img="" /></td>
+										<td>
+											<div id="imgDiv6"></div>
+										</td>
+										<td><a href="#" class="remove_image link-danger" img_id="6">Remove Image</a></td>
+									</tr>
+									<tr>
+										<td>7.</td>
+										<td><input type="file" id="inputFileToLoad7" name="image7"
+												onchange="encodeImageFileAsURL(7)" data-img="" /></td>
+										<td>
+											<div id="imgDiv7"></div>
+										</td>
+										<td><a href="#" class="remove_image link-danger" img_id="7">Remove Image</a></td>
+									</tr>
+									<tr>
+										<td>8.</td>
+										<td><input type="file" id="inputFileToLoad8" name="image8"
+												onchange="encodeImageFileAsURL(8)" data-img="" /></td>
+										<td>
+											<div id="imgDiv8"></div>
+										</td>
+										<td><a href="#" class="remove_image link-danger" img_id="8">Remove Image</a></td>
+									</tr>
+									<tr>
+										<td>9.</td>
+										<td><input type="file" id="inputFileToLoad9" name="image9"
+												onchange="encodeImageFileAsURL(9)" data-img="" /></td>
+										<td>
+											<div id="imgDiv9"></div>
+										</td>
+										<td><a href="#" class="remove_image link-danger" img_id="9">Remove Image</a></td>
+									</tr>
+									<tr>
+										<td>10.</td>
+										<td><input type="file" id="inputFileToLoad10" name="image10"
+												onchange="encodeImageFileAsURL(10)" data-img="" /></td>
+										<td>
+											<div id="imgDiv10"></div>
+										</td>
+										<td><a href="#" class="remove_image link-danger" img_id="10">Remove Image</a></td>
+									</tr>
+								</table>
+							</div>
+					</form>
+				</div>
+		</div>
+		</main>
+	</div>
+	</div>
+
+	<!-- Button trigger modal -->
+	<button type="button" class="btn btn-primary" id="modallaunchbutton" data-bs-toggle="modal"
+		data-bs-target="#exampleModal" hidden="hidden">
+		Launch demo modal
+	</button>
+
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Question Added</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					Question successfully added, It will be visible to users once admin approves your question.
+					<br /><br />
+					Question Id is <b id="outputID">sdf</b>
+				</div>
+				<div class="modal-footer">
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

@@ -1,5 +1,5 @@
 $(document).on('click','.edit_question',function(){
-		alert("edit request");
+	window.location.href = "edit-question.html?id=" + $(this).attr("question_id");
 });
 $(document).on('click','.disable_question',function(){
 	var hash = {url_for: "disable_question"};
